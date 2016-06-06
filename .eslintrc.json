@@ -13,9 +13,7 @@
         "no-alert": 2,
         "no-unused-vars": 1
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": [],
     "env": {
         "browser": true,
         "node": true,
