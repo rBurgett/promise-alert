@@ -1,0 +1,26 @@
+{
+  "name": "promise-alert",
+  "version": "0.1.0",
+  "description": "A wrapper for sweetalert to return promises for use with generators.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rBurgett/promise-alert.git"
+  },
+  "keywords": [
+    "alert",
+    "confirm",
+    "promise",
+    "sweetalert",
+    "generators"
+  ],
+  "author": "Ryan Burgett",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rBurgett/promise-alert/issues"
+  },
+  "homepage": "https://github.com/rBurgett/promise-alert#readme"
+}
