@@ -41,7 +41,7 @@ co(function* () {
 });
 
 ```
-For more examples, check out this [blog post](http://blog.burgettweb.net/2016/06/07/return-of-the-synchronous-alert-promt-and-confirm/) or continue reading below.
+For more examples, check out this [blog post](http://blog.burgettweb.net/2016/06/07/return-of-the-synchronous-alert-prompt-and-confirm/) or continue reading below.
 
 ### Introduction
 `promise-alert` takes the fantastic [sweetalert](http://t4t5.github.io/sweetalert/) library and wraps it so that each call returns a promise. This means that each sweetalert alert, prompt, and confirm you open now returns a promise rather than taking a callback. If you prefer promises over callbacks, then this allows you to use sweetalert in that way. **BUT, the real benefits of this comes with generator functions. Using generators, you can write synchronous code calling for alerts, prompts, and confirms as easily as if you are using the browser's native implementations.** Let's first look at the old way.
