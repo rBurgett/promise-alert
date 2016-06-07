@@ -29,7 +29,8 @@ var promiseAlert = function promiseAlert() {
             paramsObj = {
                 title: title,
                 text: text,
-                type: type
+                type: type,
+                closeOnConfirm: false
             };
         } else if (_typeof(params[0]) === 'object') {
             paramsObj = Object.assign({}, params[0]);
@@ -38,7 +39,8 @@ var promiseAlert = function promiseAlert() {
         }
 
         (0, _sweetalert2.default)(paramsObj, function (res) {
-            return resolve(res);
+            _sweetalert2.default.close();
+            resolve(res);
         });
     });
 };

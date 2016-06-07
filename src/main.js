@@ -9,7 +9,8 @@ const promiseAlert = (...params) => new Promise((resolve, reject) => {
         paramsObj = {
             title,
             text,
-            type
+            type,
+            closeOnConfirm: false
         };
     } else if(typeof params[0] === 'object') {
         paramsObj = Object.assign({}, params[0]);
@@ -19,7 +20,10 @@ const promiseAlert = (...params) => new Promise((resolve, reject) => {
 
     swal(
         paramsObj,
-        res => resolve(res)
+        res => {
+            swal.close();
+            resolve(res);
+        }
     );
 
 });
