@@ -1,6 +1,48 @@
 # promise-alert
 A wrapper for [sweetalert](http://t4t5.github.io/sweetalert/) to return promises for use with generators.
 
+### Installation
+```
+$ npm install promise-alert
+```
+### Usage
+`promise-alert` has two exports. `promiseAlert` calls sweetalert and returns a promise while `swal` gives you direct access to sweetalert itself.
+```
+import { promiseAlert, swal } from 'promise-alert';
+
+// usage without generators
+promiseAlert({
+  title: 'Are you sure?',
+  text: 'Do you want to continue?',
+  type: 'warning',
+  showCancelButton: true
+}).then(confirmed => {
+  // do something
+});
+```
+The recommended usage is within a [generator function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*). This allows you to write your code and handle the dialog responses synchronously. In this example, I use [co](https://www.npmjs.com/package/co) to run the generator.
+```
+import co from 'co';
+import { promiseAlert, swal } from 'promise-alert';
+
+co(function* () {
+
+  const confirmed = promiseAlert({
+    title: 'Are you sure?',
+    text: 'Do you want to continue?',
+    type: 'warning',
+    showCancelButton: true
+  });
+  
+  if(!confirmed) return;
+  
+  // do something
+  
+});
+
+```
+For more examples, check out this [blog post](http://blog.burgettweb.net/2016/06/07/return-of-the-synchronous-alert-promt-and-confirm/) or continue reading below.
+
 ### Introduction
 `promise-alert` takes the fantastic [sweetalert](http://t4t5.github.io/sweetalert/) library and wraps it so that each call returns a promise. This means that each sweetalert alert, prompt, and confirm you open now returns a promise rather than taking a callback. If you prefer promises over callbacks, then this allows you to use sweetalert in that way. **BUT, the real benefits of this comes with generator functions. Using generators, you can write synchronous code calling for alerts, prompts, and confirms as easily as if you are using the browser's native implementations.** Let's first look at the old way.
 
@@ -82,7 +124,10 @@ co(function* () {
   });
   
   // handle the response
-  if(!name) return;
+  if(!name) {
+    swal.close();
+    return;
+  }
   
   // call a confirm dialog
   const confirmed = yield promiseAlert({
