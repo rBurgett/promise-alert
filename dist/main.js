@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.swal = exports.promiseAlert = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -29,8 +30,7 @@ var promiseAlert = function promiseAlert() {
             paramsObj = {
                 title: title,
                 text: text,
-                type: type,
-                closeOnConfirm: false
+                type: type
             };
         } else if (_typeof(params[0]) === 'object') {
             paramsObj = Object.assign({}, params[0]);
@@ -39,10 +39,10 @@ var promiseAlert = function promiseAlert() {
         }
 
         (0, _sweetalert2.default)(paramsObj, function (res) {
-            _sweetalert2.default.close();
-            resolve(res);
+            return resolve(res);
         });
     });
 };
 
-exports.default = promiseAlert;
+exports.promiseAlert = promiseAlert;
+exports.swal = _sweetalert2.default;
