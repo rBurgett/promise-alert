@@ -7,7 +7,7 @@ $ npm install promise-alert
 ```
 ### Usage
 `promise-alert` has two exports. `promiseAlert` calls sweetalert and returns a promise while `swal` gives you direct access to sweetalert itself.
-```
+```js
 import { promiseAlert, swal } from 'promise-alert';
 
 // usage without generators
@@ -21,7 +21,7 @@ promiseAlert({
 });
 ```
 The recommended usage is within a [generator function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*). This allows you to write your code and handle the dialog responses synchronously. In this example, I use [co](https://www.npmjs.com/package/co) to run the generator.
-```
+```js
 import co from 'co';
 import { promiseAlert, swal } from 'promise-alert';
 
