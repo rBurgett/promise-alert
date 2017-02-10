@@ -27,7 +27,7 @@ import { promiseAlert, swal } from 'promise-alert';
 
 co(function* () {
 
-  const confirmed = promiseAlert({
+  const confirmed = yield promiseAlert({
     title: 'Are you sure?',
     text: 'Do you want to continue?',
     type: 'warning',
